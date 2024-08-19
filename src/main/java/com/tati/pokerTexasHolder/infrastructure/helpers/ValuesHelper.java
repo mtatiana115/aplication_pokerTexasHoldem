@@ -68,20 +68,4 @@ public class ValuesHelper {
     }
   }
 
-  public int compareHandsValues(String hand1, String hand2) {
-    int[] values1 = extractValues(hand1);
-    int[] values2 = extractValues(hand2);
-
-    // Comparar cada valor de la mano desde la carta más alta
-    for (int i = 4; i >= 0; i--) {
-      if (values1[i] > values2[i]) {
-        return 1; // hand1 gana
-      } else if (values1[i] < values2[i]) {
-        return -1; // hand2 gana
-      }
-    }
-
-    return 0; // Son iguales
-  }
-
 }
