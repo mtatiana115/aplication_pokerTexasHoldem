@@ -15,6 +15,7 @@ public class HandHelper {
 
     @Autowired
     private final ValuesHelper valuesHelper;
+    @Autowired
     private final StrategyHelper strategyHelper;
 
     public HandType evaluateHand(String hand) {
