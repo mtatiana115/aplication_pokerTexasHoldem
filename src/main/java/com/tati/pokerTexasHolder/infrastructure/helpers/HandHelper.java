@@ -20,10 +20,15 @@ public class HandHelper {
 
     public HandType evaluateHand(String hand) {
         int[] values = valuesHelper.extractValues(hand);
+        char[] suits = valuesHelper.extractSuits(hand);
 
         log.info("Values: {}", values);
 
-        if (strategyHelper.isStraight(values)) {
+        if (strategyHelper.isStraightFlush(values, suits)) {
+            return HandType.STRAIGHT_FLUSH;
+        } else if (strategyHelper.isFlush(suits)) {
+            return HandType.FLUSH;
+        } else if (strategyHelper.isStraight(values)) {
             return HandType.STRAIGHT;
         } else if (strategyHelper.isThreeOfAKind(values)) {
             return HandType.THREE_OF_A_KIND;

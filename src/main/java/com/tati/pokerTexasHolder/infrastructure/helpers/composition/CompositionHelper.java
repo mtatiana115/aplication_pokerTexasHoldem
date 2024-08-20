@@ -15,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class CompositionHelper {
 
+    private final SuitsCompositionHelper SuitsCompositionHelper;
     private final ThreeOfAKindHelper threeOfAKindHelper;
     private final TwoPairHelper twoPairHelper;
     private final OnePairHelper onePairHelper;
@@ -23,6 +24,15 @@ public class CompositionHelper {
     public List<String> validComposition(String winnerHand, HandType winnerHandType) {
         List<String> compositionWinnerHand = new ArrayList<>();
         switch (winnerHandType) {
+            case STRAIGHT_FLUSH:
+                compositionWinnerHand = SuitsCompositionHelper.compositionSuits(winnerHand);
+                break;
+            case FLUSH:
+                compositionWinnerHand = SuitsCompositionHelper.compositionSuits(winnerHand);
+                break;
+            case STRAIGHT:
+                compositionWinnerHand = straightHelper.compositionStraight(winnerHand);
+                break;
             case THREE_OF_A_KIND:
                 compositionWinnerHand = threeOfAKindHelper.compositionThreeOfAKind(winnerHand);
                 break;
@@ -31,9 +41,6 @@ public class CompositionHelper {
                 break;
             case ONE_PAIR:
                 compositionWinnerHand = onePairHelper.compositionOnePair(winnerHand);
-                break;
-            case STRAIGHT:
-                compositionWinnerHand = straightHelper.compositionStraight(winnerHand);
                 break;
             case HIGH_CARD:
             default:

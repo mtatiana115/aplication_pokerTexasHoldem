@@ -15,19 +15,25 @@ public class ValuesHelper {
   public int[] extractValues(String hand) {
     String[] cards = hand.split(" ");
     int[] values = new int[5];
-    char[] suits = new char[5];
 
     for (int i = 0; i < 5; i++) {
       // Extraer el valor de la carta
       String value = cards[i].substring(0, cards[i].length() - 1);
       // Convertir el valor de la carta en un número entero
       values[i] = getValue(value);
-      // Extraer el palo de la carta (el último carácter)
-      suits[i] = cards[i].charAt(cards[i].length() - 1);
     }
 
     Arrays.sort(values);
     return values;
+  }
+
+  public char[] extractSuits(String hand) {
+    char[] suits = new char[5];
+    String[] cards = hand.split(" ");
+    for (int i = 0; i < 5; i++) {
+      suits[i] = cards[i].charAt(cards[i].length() - 1);
+    }
+    return suits;
   }
 
   public int getValue(String card) {
@@ -65,6 +71,21 @@ public class ValuesHelper {
         return "J";
       default:
         return String.valueOf(value);
+    }
+  }
+
+  public String convertSuitToString(char suit) {
+    switch (suit) {
+      case 'S':
+        return "Spade";
+      case 'H':
+        return "Heart";
+      case 'D':
+        return "Diamond";
+      case 'C':
+        return "Club";
+      default:
+        return String.valueOf(suit);
     }
   }
 
