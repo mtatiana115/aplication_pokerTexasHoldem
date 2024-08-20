@@ -21,7 +21,7 @@ public class PokerTexasHolderApplication {
 			return new WebMvcConfigurer() {
 				@Override
 				public void addCorsMappings(CorsRegistry registry) {
-					registry.addMapping("/**")
+					registry.addMapping("/poker/validation")
 							.allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH");
 				}
 			};
